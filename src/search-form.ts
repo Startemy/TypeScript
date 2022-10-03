@@ -1,7 +1,7 @@
 import { renderBlock } from './lib.js'
 
-export function renderSearchFormBlock() {
-
+export function renderSearchFormBlock(dateEntery: string, dateExit: string) {
+  
   const dateTomorrow = new Date(new Date().setDate(new Date().getDate() + 1));
   const tomorrow = `${dateTomorrow.getFullYear()}-${String(dateTomorrow.getMonth() + 1).padStart(2, '0')}-${String(dateTomorrow.getDate()).padStart(2, '0')}`;
 
@@ -11,30 +11,31 @@ export function renderSearchFormBlock() {
   const dateNexMonth = new Date(new Date().setMonth(new Date().getMonth() + 2));
   const nextMonth = `${dateNexMonth.getFullYear()}-${String(dateNexMonth.getMonth() + 1).padStart(2, '0')}-${String(dateNexMonth.getDate()).padStart(2, '0')}`;
 
+  console.log(dateEntery)
+  console.log(dateExit)
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const valueDate = (dateEntery: Date | string, dateExit: Date | string) => {
-      if (dateEntery && dateExit) {
-        console.log(dateEntery)
-      }
-    }
+  // document.addEventListener('DOMContentLoaded', function() {
+  //   const valueDate = (dateEntery: Date | string, dateExit: Date | string) => {
+  //     if (dateEntery && dateExit) {
+  //       console.log(dateEntery)
+  //     }
+  //   }
 
-    const btnFind = document.querySelector('form')
-    if (btnFind) {
-      btnFind?.addEventListener('submit', evnt => {
-        evnt.preventDefault()
-        const dateEntery = (<HTMLInputElement>document.querySelector('#check-in-date')).value
-        const dateExit = (<HTMLInputElement>document.querySelector('#check-out-date')).value
-        console.log(dateEntery)
-        console.log(dateExit)
-        valueDate(dateEntery, dateExit)
-        console.log('OK')
-      })
-    } else {
-      console.log('Nothing')
-    }
-  }, false)
-
+  //   const btnFind = document.querySelector('form')
+  //   if (btnFind) {
+  //     btnFind?.addEventListener('submit', evnt => {
+  //       evnt.preventDefault()
+  //       const dateEntery = (<HTMLInputElement>document.querySelector('#check-in-date')).value
+  //       const dateExit = (<HTMLInputElement>document.querySelector('#check-out-date')).value
+  //       console.log(dateEntery)
+  //       console.log(dateExit)
+  //       valueDate(dateEntery, dateExit)
+  //       console.log('OK')
+  //     })
+  //   } else {
+  //     console.log('Nothing')
+  //   }
+  // }, false)
 
   renderBlock(
     'search-form-block',
